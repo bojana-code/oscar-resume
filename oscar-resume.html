@@ -3,32 +3,26 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Oscar Rodriguez — Resume (Green)</title>
+  <title>Oscar Rodriguez — Resume</title>
   <style>
     /* ── RESET ──────────────────────────────────── */
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --orange:       #D97706;
-      --orange-dark:  #92400E;
-      --orange-light: #FDE68A;
-      --orange-pale:  #FFFBEB;
-      --orange-mid:   #FEF3C7;
+      --orange:       #F97316;
+      --orange-dark:  #C2410C;
+      --orange-light: #FED7AA;
+      --orange-pale:  #FFF7ED;
+      --orange-mid:   #FFEDD5;
       --green:        #4ADE80;
-      --header-bg:    #14532D;
+      --header-bg:    #7C2D12;
       --card-bg:      #FFFFFF;
-      --border:       #BBF7D0;
-      --page-bg:      #F0FDF4;
-      --sidebar-bg:   #DCFCE7;
+      --border:       #FED7AA;
+      --page-bg:      #FFF7ED;
       --text-dark:    #1A1A1A;
-      --text-mid:     #14532D;
-      --text-gray:    #166534;
+      --text-mid:     #4B2400;
+      --text-gray:    #92400E;
       --white:        #FFFFFF;
-
-      /* green-specific extras */
-      --accent:       #16A34A;
-      --accent-light: #DCFCE7;
-      --amber:        #D97706;
     }
 
     html, body {
@@ -76,8 +70,8 @@
     .cta-btn:hover { transform: translateY(-1px); box-shadow: 0 3px 10px rgba(0,0,0,0.22); }
     .cta-btn:active { transform: translateY(0); }
 
-    .cta-btn-print    { background: var(--white); color: var(--accent); border: 1.5px solid var(--border); }
-    .cta-btn-download { background: var(--accent); color: var(--white); }
+    .cta-btn-print    { background: var(--white); color: var(--orange-dark); border: 1.5px solid var(--orange-light); }
+    .cta-btn-download { background: var(--orange); color: var(--white); }
 
     /* ── HEADER ──────────────────────────────────── */
     .header {
@@ -93,7 +87,7 @@
 
     .badge {
       display: inline-block;
-      background: #16A34A;
+      background: var(--orange);
       color: var(--white);
       font-size: 0.65rem;
       font-weight: 800;
@@ -175,7 +169,7 @@
       font-weight: 800;
       letter-spacing: 0.14em;
       text-transform: uppercase;
-      color: #14532D;
+      color: var(--orange-dark);
       margin-bottom: 0.55rem;
       display: flex;
       align-items: center;
@@ -214,7 +208,7 @@
       font-size: 0.95rem;
       font-weight: 700;
       font-style: italic;
-      color: #16A34A;
+      color: var(--orange);
       border-top: 1px solid var(--border);
       padding-top: 0.6rem;
     }
@@ -227,7 +221,7 @@
 
     /* ── SIDEBAR ─────────────────────────────────── */
     .sidebar {
-      background: #DCFCE7;
+      background: var(--orange-mid);
       border-right: 2px solid var(--border);
       padding: 1.5rem 1.2rem;
       display: flex;
@@ -259,7 +253,7 @@
     .lang-note  { font-size: 0.65rem; color: var(--text-gray); margin-bottom: 5px; }
 
     .lang-bar-track { width: 100%; height: 6px; background: var(--orange-light); border-radius: 4px; overflow: hidden; }
-    .lang-bar-fill  { height: 100%; border-radius: 4px; background: linear-gradient(90deg, #14532D, #4ADE80); }
+    .lang-bar-fill  { height: 100%; border-radius: 4px; background: linear-gradient(90deg, var(--orange-dark), var(--orange)); }
 
     /* ── EDUCATION ───────────────────────────────── */
     .edu-title  { font-size: 0.875rem; font-weight: 700; margin-bottom: 2px; }
@@ -283,13 +277,13 @@
     .tags { display: flex; flex-wrap: wrap; gap: 6px 5px; }
 
     .tag {
-      background: #DCFCE7;
-      border: 1.5px solid #BBF7D0;
+      background: var(--orange-pale);
+      border: 1.5px solid var(--border);
       border-radius: 20px;
       padding: 4px 10px;
       font-size: 0.72rem;
       font-weight: 700;
-      color: #14532D;
+      color: var(--orange-dark);
     }
 
     /* ── ELIGIBILITY ─────────────────────────────── */
@@ -316,7 +310,7 @@
     }
 
     .avail-slot {
-      background: #16A34A;
+      background: var(--orange);
       color: var(--white);
       border-radius: 6px;
       padding: 5px 2px;
@@ -326,15 +320,15 @@
     }
 
     .avail-slot.off  { background: var(--border); color: var(--text-gray); }
-    .avail-slot.soft { background: #BBF7D0; color: #14532D; }
+    .avail-slot.soft { background: var(--orange-light); color: var(--orange-dark); }
 
     .avail-note   { font-size: 0.58rem; color: var(--text-gray); margin-top: 3px; line-height: 1.35; }
-    .avail-future { font-size: 0.58rem; color: #16A34A; font-weight: 700; margin-top: 3px; line-height: 1.35; }
+    .avail-future { font-size: 0.58rem; color: var(--orange); font-weight: 700; margin-top: 3px; line-height: 1.35; }
 
     /* ── VOLUNTEER ───────────────────────────────── */
     .vol-header { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 3px; }
     .vol-title  { font-size: 1rem; font-weight: 700; }
-    .vol-dur    { font-size: 0.72rem; font-weight: 700; color: #16A34A; flex-shrink: 0; margin-left: 8px; }
+    .vol-dur    { font-size: 0.72rem; font-weight: 700; color: var(--orange); flex-shrink: 0; margin-left: 8px; }
     .vol-dates  { font-size: 0.72rem; color: var(--text-gray); margin-bottom: 3px; }
     .vol-org    { font-size: 0.78rem; color: var(--text-gray); margin-bottom: 0.6rem; }
 
@@ -349,19 +343,19 @@
       margin-bottom: 4px;
     }
 
-    .vol-bullets li::before { content: '▪'; position: absolute; left: 0; color: #16A34A; }
+    .vol-bullets li::before { content: '▪'; position: absolute; left: 0; color: var(--orange); }
 
     /* ── INTERESTS ───────────────────────────────── */
     .interests-grid { display: grid; grid-template-columns: repeat(6, 1fr); gap: 6px; }
     .interest-item  { text-align: center; }
     .interest-emoji { font-size: 1.6rem; display: block; margin-bottom: 4px; line-height: 1; }
-    .interest-label { font-size: 0.6rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.06em; color: #14532D; }
+    .interest-label { font-size: 0.6rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.06em; color: var(--orange-dark); }
     .interest-sub   { font-size: 0.58rem; color: var(--text-gray); }
 
     /* ── FOOTER BAR ──────────────────────────────── */
     .footer-bar {
       height: 10px;
-      background: linear-gradient(90deg, #14532D, #16A34A, #4ADE80);
+      background: linear-gradient(90deg, var(--orange-dark), var(--orange), #FFA040);
     }
 
     /* ══════════════════════════════════════════════
