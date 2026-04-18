@@ -7,7 +7,7 @@
   <style>
     @page {
       size: letter;
-      margin: 0;
+      margin: 0.3in;
     }
 
     *, *::before, *::after {
@@ -452,9 +452,68 @@
       border-radius: 2px;
     }
 
+    /* ── CTA BUTTONS ────────────────────────────── */
+    .cta-buttons {
+      position: fixed;
+      top: 16px;
+      right: 16px;
+      display: flex;
+      gap: 10px;
+      z-index: 1000;
+    }
+
+    .cta-btn {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      padding: 9px 18px;
+      border-radius: 8px;
+      font-size: 10pt;
+      font-weight: 700;
+      cursor: pointer;
+      border: none;
+      text-decoration: none;
+      letter-spacing: 0.02em;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.18);
+      transition: transform 0.1s, box-shadow 0.1s;
+    }
+
+    .cta-btn:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 4px 18px rgba(0,0,0,0.22);
+    }
+
+    .cta-btn:active { transform: translateY(0); }
+
+    .cta-btn-print {
+      background: var(--white);
+      color: var(--orange-dark);
+      border: 2px solid var(--border);
+    }
+
+    .cta-btn-download {
+      background: var(--orange);
+      color: var(--white);
+    }
+
     @media print {
-      html, body { width: 8.5in; height: 11in; overflow: hidden; }
-      .page { width: 8.5in; height: 11in; }
+      .cta-buttons { display: none; }
+
+      html, body {
+        width: 7.9in;
+        height: 10.4in;
+        overflow: hidden;
+      }
+      .page {
+        width: 7.9in;
+        height: 10.4in;
+      }
+      .header {
+        height: 2.1in;
+        padding: 0.22in 0.28in;
+      }
+      .sidebar { width: 2.2in; }
+      .footer-bar { height: 0.13in; }
     }
 
     @media screen and (max-width: 680px) {
@@ -575,6 +634,12 @@
   </style>
 </head>
 <body>
+<!-- CTA Buttons (screen only) -->
+<div class="cta-buttons">
+  <button class="cta-btn cta-btn-print" onclick="window.print()">🖨️ Print</button>
+  <a class="cta-btn cta-btn-download" href="oscar-resume.pdf" download="Oscar-Rodriguez-Resume.pdf">⬇️ Download PDF</a>
+</div>
+
 <div class="page">
 
   <!-- ══ HEADER ══════════════════════════════════════════ -->
@@ -751,7 +816,7 @@
         <div class="section-title">Volunteer Experience</div>
         <div class="card">
           <div class="vol-header">
-            <div class="vol-title">Carpentry Volunteer &middot; St. Chrysostom's Closet</div>
+            <div class="vol-title">Volunteering &middot; St. Chrys Closet</div>
             <div class="vol-dur">8 Months</div>
           </div>
           <div class="vol-dates">Jul 2025 &ndash; Feb 2026</div>
