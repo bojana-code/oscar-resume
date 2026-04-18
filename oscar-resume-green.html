@@ -436,81 +436,25 @@
     }
 
     /* ══════════════════════════════════════════════
-       PRINT — one letter page
+       PRINT — one letter page, identical to web view
     ══════════════════════════════════════════════ */
     @page { size: letter; margin: 0.3in; }
 
     @media print {
-      html, body { font-size: 9px; background: white; }
+      /* Scale the whole page proportionally so it looks exactly like
+         the web view but fits on one letter sheet (10.4in printable height) */
+      html {
+        zoom: 0.853;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+      }
+
+      body { margin: 0; background: white; }
 
       .cta-buttons { display: none; }
       .qr-box      { display: flex; }
 
-      .resume {
-        max-width: none;
-        width: 100%;
-        box-shadow: none;
-      }
-
-      .header {
-        padding: 0.18in 0.22in 0.14in;
-        gap: 0.15in;
-      }
-
-      .header h1      { font-size: 2.6rem; }
-      .header-tagline { font-size: 0.6rem; margin-bottom: 0.1rem; }
-      .header-quote   { font-size: 0.75rem; margin-bottom: 0.5rem; }
-      .contact-row    { font-size: 0.78rem; gap: 0.6rem; }
-      .badge          { font-size: 0.55rem; padding: 2px 9px; margin-bottom: 0.3rem; }
-
-      .qr-box svg  { width: 68px; height: 68px; }
-      .qr-box      { padding: 7px; }
-
-      .about-section { padding: 0.12in 0.22in; }
-      .about-text    { font-size: 0.88rem; line-height: 1.5; margin-bottom: 0.4rem; }
-      .about-tagline { font-size: 0.8rem; padding-top: 0.3rem; }
-
-      .two-col { grid-template-columns: 1.75in 1fr; }
-
-      .sidebar      { padding: 0.12in 0.14in; gap: 0.12in; }
-      .main-content { padding: 0.12in 0.16in; gap: 0.12in; }
-
-      .card { padding: 0.08in 0.1in; border-radius: 6px; }
-
-      .section-title { font-size: 0.55rem; margin-bottom: 0.3rem; }
-
-      .lang-name  { font-size: 0.8rem; }
-      .lang-level { font-size: 0.55rem; }
-      .lang-note  { font-size: 0.6rem; margin-bottom: 3px; }
-
-      .edu-title  { font-size: 0.8rem; }
-      .edu-detail { font-size: 0.65rem; }
-      .edu-gap    { height: 5px; }
-      .pill       { font-size: 0.55rem; padding: 1px 7px; }
-
-      .tag { font-size: 0.65rem; padding: 3px 7px; }
-      .tags { gap: 4px 3px; }
-
-      .elig-row { font-size: 0.75rem; }
-      .check-circle { width: 16px; height: 16px; font-size: 0.65rem; }
-
-      .avail-grid { gap: 4px; }
-      .avail-day  { font-size: 0.58rem; margin-bottom: 3px; }
-      .avail-slot { font-size: 0.55rem; padding: 3px 1px; border-radius: 4px; margin-bottom: 2px; }
-      .avail-note, .avail-future { font-size: 0.52rem; margin-top: 2px; }
-
-      .vol-title { font-size: 0.85rem; }
-      .vol-dur   { font-size: 0.65rem; }
-      .vol-dates { font-size: 0.65rem; }
-      .vol-org   { font-size: 0.7rem; margin-bottom: 0.3rem; }
-      .vol-bullets li { font-size: 0.82rem; line-height: 1.4; margin-bottom: 2px; }
-
-      .interests-grid { gap: 4px; }
-      .interest-emoji { font-size: 1.2rem; margin-bottom: 2px; }
-      .interest-label { font-size: 0.55rem; }
-      .interest-sub   { font-size: 0.52rem; }
-
-      .footer-bar { height: 6px; }
+      .resume { max-width: none; width: 100%; box-shadow: none; }
     }
   </style>
 </head>
@@ -578,7 +522,7 @@
         <div class="section-title">Education</div>
         <div class="card">
           <div class="edu-title">High School Diploma</div>
-          <div class="edu-detail">Graduated</div>
+          <div class="edu-detail">Graduated 2025<br>Monterrey, Mexico</div>
           <div class="edu-gap"></div>
           <div class="edu-title">ESL Classes</div>
           <div class="edu-detail">City Colleges of Chicago<br>12 hrs/week &middot; Building English fluency</div>
