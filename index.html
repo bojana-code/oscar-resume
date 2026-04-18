@@ -2,19 +2,11 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=8.5in">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Oscar Rodriguez — Resume</title>
   <style>
-    @page {
-      size: letter;
-      margin: 0.3in;
-    }
-
-    *, *::before, *::after {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
+    /* ── RESET ──────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
       --orange:       #F97316;
@@ -23,12 +15,9 @@
       --orange-pale:  #FFF7ED;
       --orange-mid:   #FFEDD5;
       --green:        #4ADE80;
-      --black:        #000000;
       --header-bg:    #7C2D12;
-      --sidebar-bg:   #FFEDD5;
       --card-bg:      #FFFFFF;
       --border:       #FED7AA;
-      --border-dark:  #FDBA74;
       --page-bg:      #FFF7ED;
       --text-dark:    #1A1A1A;
       --text-mid:     #4B2400;
@@ -37,153 +26,151 @@
     }
 
     html, body {
-      width: 8.5in;
-      min-height: 11in;
-      overflow: auto;
       background: var(--page-bg);
       color: var(--text-dark);
       font-family: -apple-system, 'Helvetica Neue', Arial, sans-serif;
+      font-size: 16px;
+      line-height: 1.5;
       -webkit-print-color-adjust: exact;
       print-color-adjust: exact;
     }
 
-    .page {
-      width: 8.5in;
-      min-height: 11in;
-      display: flex;
-      flex-direction: column;
+    /* ── WRAPPER ─────────────────────────────────── */
+    .resume {
+      max-width: 860px;
+      margin: 0 auto;
+      background: var(--page-bg);
+      box-shadow: 0 0 40px rgba(0,0,0,0.12);
     }
 
-    /* ── HEADER ─────────────────────────────────── */
-    .header {
-      flex-shrink: 0;
-      background: var(--header-bg);
-      color: var(--white);
+    /* ── CTA BUTTONS (screen only) ───────────────── */
+    .cta-buttons {
+      display: flex;
+      flex-direction: row;
+      gap: 6px;
+    }
+
+    .cta-btn {
       display: flex;
       align-items: center;
-      gap: 0.22in;
-      padding: 0.28in 0.34in;
-      height: 2.3in;
+      gap: 5px;
+      padding: 5px 11px;
+      border-radius: 6px;
+      font-size: 0.7rem;
+      font-weight: 700;
+      cursor: pointer;
+      border: none;
+      text-decoration: none;
+      letter-spacing: 0.03em;
+      box-shadow: 0 1px 6px rgba(0,0,0,0.18);
+      transition: transform 0.1s, box-shadow 0.1s;
+      white-space: nowrap;
     }
 
-    .header-left { flex: 1; }
+    .cta-btn:hover { transform: translateY(-1px); box-shadow: 0 3px 10px rgba(0,0,0,0.22); }
+    .cta-btn:active { transform: translateY(0); }
+
+    .cta-btn-print    { background: var(--white); color: var(--orange-dark); border: 1.5px solid var(--orange-light); }
+    .cta-btn-download { background: var(--orange); color: var(--white); }
+
+    /* ── HEADER ──────────────────────────────────── */
+    .header {
+      background: var(--header-bg);
+      color: var(--white);
+      padding: 2rem 2.2rem 1.6rem;
+      display: flex;
+      align-items: flex-end;
+      gap: 1.5rem;
+    }
+
+    .header-main { flex: 1; min-width: 0; }
 
     .badge {
       display: inline-block;
       background: var(--orange);
       color: var(--white);
-      font-size: 7.5pt;
+      font-size: 0.65rem;
       font-weight: 800;
       letter-spacing: 0.1em;
       text-transform: uppercase;
       padding: 3px 13px;
       border-radius: 20px;
-      margin-bottom: 10px;
+      margin-bottom: 0.6rem;
     }
 
     .header h1 {
-      font-size: 40pt;
+      font-size: 2.8rem;
       font-weight: 900;
-      letter-spacing: -0.025em;
-      line-height: 0.93;
-      margin-bottom: 8px;
+      letter-spacing: -0.02em;
+      line-height: 1;
+      margin-bottom: 0.4rem;
     }
 
     .header-tagline {
-      font-size: 9.5pt;
+      font-size: 0.7rem;
       font-weight: 600;
-      letter-spacing: 0.18em;
+      letter-spacing: 0.16em;
       text-transform: uppercase;
       color: #FFCBA4;
-      margin-bottom: 6px;
+      margin-bottom: 0.5rem;
     }
 
     .header-quote {
-      font-size: 9pt;
-      font-weight: 400;
+      font-size: 0.95rem;
       font-style: italic;
       color: #FFE0C8;
-      margin-bottom: 12px;
-      letter-spacing: 0.01em;
+      margin-bottom: 1.1rem;
     }
 
     .contact-row {
       display: flex;
       flex-wrap: wrap;
-      gap: 18px;
-      font-size: 10.5pt;
+      gap: 0.9rem;
+      font-size: 0.9rem;
       color: #FFE0C8;
-      margin-top: 10px;
     }
 
-    .contact-row span { display: flex; align-items: center; gap: 6px; }
-    .contact-row .icon { font-size: 13pt; line-height: 1; }
+    .contact-row span { display: flex; align-items: center; gap: 5px; }
+    .contact-row .icon { font-size: 1rem; line-height: 1; }
 
-    .qr-box {
-      flex-shrink: 0;
-      background: var(--white);
-      border-radius: 12px;
-      padding: 10px;
+    /* ── HEADER RIGHT ────────────────────────────── */
+    .header-right {
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 6px;
-      width: 1.18in;
+      gap: 0.5rem;
+      flex-shrink: 0;
+    }
+
+    .qr-box {
+      background: var(--white);
+      border-radius: 10px;
+      padding: 9px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 5px;
       border: 2px solid var(--orange-light);
     }
 
-    .qr-box svg {
-      width: 80px;
-      height: 80px;
-    }
+    .qr-box svg { width: 80px; height: 80px; }
 
     .qr-label {
-      font-size: 6pt;
+      font-size: 0.55rem;
       font-weight: 800;
       letter-spacing: 0.1em;
       text-transform: uppercase;
       color: var(--orange-dark);
     }
 
-    /* ── BODY ───────────────────────────────────── */
-    .body {
-      flex: 1;
-      display: flex;
-      overflow: hidden;
-    }
-
-    /* ── SIDEBAR ────────────────────────────────── */
-    .sidebar {
-      width: 2.5in;
-      flex-shrink: 0;
-      background: var(--sidebar-bg);
-      border-right: 2px solid var(--border);
-      padding: 0.2in 0.2in;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      overflow: hidden;
-    }
-
-    /* ── MAIN ───────────────────────────────────── */
-    .main {
-      flex: 1;
-      background: var(--page-bg);
-      padding: 0.2in 0.22in;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      overflow: hidden;
-    }
-
-    /* ── SECTION TITLE ──────────────────────────── */
+    /* ── SECTION LABEL ───────────────────────────── */
     .section-title {
-      font-size: 6.5pt;
+      font-size: 0.6rem;
       font-weight: 800;
       letter-spacing: 0.14em;
       text-transform: uppercase;
       color: var(--orange-dark);
-      margin-bottom: 7px;
+      margin-bottom: 0.55rem;
       display: flex;
       align-items: center;
       gap: 6px;
@@ -196,16 +183,62 @@
       background: var(--border);
     }
 
-    /* ── CARD ───────────────────────────────────── */
+    /* ── CARD ────────────────────────────────────── */
     .card {
       background: var(--card-bg);
       border: 1.5px solid var(--border);
       border-radius: 10px;
-      padding: 11px 13px;
+      padding: 0.85rem 1rem;
     }
 
-    /* ── LANGUAGES ──────────────────────────────── */
-    .lang-block { margin-bottom: 10px; }
+    /* ── ABOUT SECTION (full-width) ──────────────── */
+    .about-section {
+      padding: 1.5rem 2.2rem;
+      border-bottom: 2px solid var(--border);
+    }
+
+    .about-text {
+      font-size: 1.05rem;
+      line-height: 1.65;
+      color: var(--text-mid);
+      margin-bottom: 0.75rem;
+    }
+
+    .about-tagline {
+      font-size: 0.95rem;
+      font-weight: 700;
+      font-style: italic;
+      color: var(--orange);
+      border-top: 1px solid var(--border);
+      padding-top: 0.6rem;
+    }
+
+    /* ── TWO-COLUMN BODY ─────────────────────────── */
+    .two-col {
+      display: grid;
+      grid-template-columns: 250px 1fr;
+    }
+
+    /* ── SIDEBAR ─────────────────────────────────── */
+    .sidebar {
+      background: var(--orange-mid);
+      border-right: 2px solid var(--border);
+      padding: 1.5rem 1.2rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1.4rem;
+    }
+
+    /* ── MAIN CONTENT ────────────────────────────── */
+    .main-content {
+      padding: 1.5rem 1.4rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1.4rem;
+    }
+
+    /* ── LANGUAGES ───────────────────────────────── */
+    .lang-block { margin-bottom: 0.75rem; }
     .lang-block:last-child { margin-bottom: 0; }
 
     .lang-header {
@@ -215,46 +248,23 @@
       margin-bottom: 3px;
     }
 
-    .lang-name  { font-size: 9pt; font-weight: 700; color: var(--text-dark); }
+    .lang-name  { font-size: 0.9rem; font-weight: 700; }
+    .lang-level { font-size: 0.6rem; font-weight: 800; letter-spacing: 0.06em; text-transform: uppercase; color: var(--orange); }
+    .lang-note  { font-size: 0.65rem; color: var(--text-gray); margin-bottom: 5px; }
 
-    .lang-level {
-      font-size: 6.5pt;
-      font-weight: 800;
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
-      color: var(--orange);
-    }
+    .lang-bar-track { width: 100%; height: 6px; background: var(--orange-light); border-radius: 4px; overflow: hidden; }
+    .lang-bar-fill  { height: 100%; border-radius: 4px; background: linear-gradient(90deg, var(--orange-dark), var(--orange)); }
 
-    .lang-note {
-      font-size: 6.5pt;
-      color: var(--text-gray);
-      margin-bottom: 5px;
-    }
-
-    .lang-bar-track {
-      width: 100%;
-      height: 6px;
-      background: var(--orange-light);
-      border-radius: 4px;
-      overflow: hidden;
-    }
-
-    .lang-bar-fill {
-      height: 100%;
-      border-radius: 4px;
-      background: linear-gradient(90deg, var(--orange-dark), var(--orange));
-    }
-
-    /* ── EDUCATION ──────────────────────────────── */
-    .edu-title  { font-size: 8.5pt; font-weight: 700; margin-bottom: 1px; }
-    .edu-detail { font-size: 7pt; color: var(--text-gray); line-height: 1.45; }
-    .edu-gap    { height: 9px; }
+    /* ── EDUCATION ───────────────────────────────── */
+    .edu-title  { font-size: 0.875rem; font-weight: 700; margin-bottom: 2px; }
+    .edu-detail { font-size: 0.72rem; color: var(--text-gray); line-height: 1.4; }
+    .edu-gap    { height: 8px; }
 
     .pill {
       display: inline-block;
       background: var(--green);
       color: var(--text-dark);
-      font-size: 6pt;
+      font-size: 0.58rem;
       font-weight: 800;
       letter-spacing: 0.06em;
       text-transform: uppercase;
@@ -263,76 +273,36 @@
       margin-top: 4px;
     }
 
-    /* ── STRENGTHS ──────────────────────────────── */
-    .tags {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 6px 5px;
-    }
+    /* ── STRENGTHS ───────────────────────────────── */
+    .tags { display: flex; flex-wrap: wrap; gap: 6px 5px; }
 
     .tag {
       background: var(--orange-pale);
       border: 1.5px solid var(--border);
       border-radius: 20px;
       padding: 4px 10px;
-      font-size: 7pt;
+      font-size: 0.72rem;
       font-weight: 700;
       color: var(--orange-dark);
     }
 
-    /* ── ELIGIBILITY ────────────────────────────── */
-    .elig-row {
-      display: flex;
-      align-items: center;
-      gap: 9px;
-      font-size: 8pt;
-      font-weight: 600;
-      color: var(--text-dark);
-    }
+    /* ── ELIGIBILITY ─────────────────────────────── */
+    .elig-row { display: flex; align-items: center; gap: 9px; font-size: 0.82rem; font-weight: 600; }
 
     .check-circle {
-      width: 20px;
-      height: 20px;
+      width: 20px; height: 20px;
       background: var(--green);
       border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 11pt;
-      line-height: 1;
-      flex-shrink: 0;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 0.75rem; flex-shrink: 0;
     }
 
-    /* ── ABOUT ME ───────────────────────────────── */
-    .about-text {
-      font-size: 11pt;
-      line-height: 1.65;
-      color: var(--text-mid);
-      margin-bottom: 8px;
-    }
-
-    .about-tagline {
-      font-size: 9pt;
-      font-weight: 700;
-      font-style: italic;
-      color: var(--orange);
-      letter-spacing: 0.01em;
-      border-top: 1px solid var(--border);
-      padding-top: 7px;
-      margin-top: 2px;
-    }
-
-    /* ── AVAILABILITY ───────────────────────────── */
-    .avail-grid {
-      display: grid;
-      grid-template-columns: repeat(6, 1fr);
-      gap: 6px;
-    }
-
-    .avail-col { text-align: center; }
+    /* ── AVAILABILITY ────────────────────────────── */
+    .avail-grid { display: grid; grid-template-columns: repeat(6, 1fr); gap: 6px; }
+    .avail-col  { text-align: center; }
 
     .avail-day {
-      font-size: 7pt;
+      font-size: 0.65rem;
       font-weight: 800;
       text-transform: uppercase;
       color: var(--orange-dark);
@@ -343,314 +313,210 @@
       background: var(--orange);
       color: var(--white);
       border-radius: 6px;
-      padding: 4px 2px;
-      font-size: 6.5pt;
+      padding: 5px 2px;
+      font-size: 0.62rem;
       font-weight: 700;
       margin-bottom: 3px;
     }
 
-    .avail-slot.off {
-      background: var(--border);
-      color: var(--text-gray);
-    }
+    .avail-slot.off  { background: var(--border); color: var(--text-gray); }
+    .avail-slot.soft { background: var(--orange-light); color: var(--orange-dark); }
 
-    .avail-slot.soft {
-      background: var(--orange-light);
-      color: var(--orange-dark);
-    }
+    .avail-note   { font-size: 0.58rem; color: var(--text-gray); margin-top: 3px; line-height: 1.35; }
+    .avail-future { font-size: 0.58rem; color: var(--orange); font-weight: 700; margin-top: 3px; line-height: 1.35; }
 
-    .avail-note {
-      font-size: 6pt;
-      color: var(--text-gray);
-      margin-top: 3px;
-      line-height: 1.35;
-    }
+    /* ── VOLUNTEER ───────────────────────────────── */
+    .vol-header { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 3px; }
+    .vol-title  { font-size: 1rem; font-weight: 700; }
+    .vol-dur    { font-size: 0.72rem; font-weight: 700; color: var(--orange); flex-shrink: 0; margin-left: 8px; }
+    .vol-dates  { font-size: 0.72rem; color: var(--text-gray); margin-bottom: 3px; }
+    .vol-org    { font-size: 0.78rem; color: var(--text-gray); margin-bottom: 0.6rem; }
 
-    .avail-future {
-      font-size: 5.5pt;
-      color: var(--orange);
-      font-weight: 700;
-      margin-top: 3px;
-      line-height: 1.35;
-    }
-
-    /* ── VOLUNTEER ──────────────────────────────── */
-    .vol-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: baseline;
-      margin-bottom: 4px;
-    }
-
-    .vol-title   { font-size: 10pt; font-weight: 700; }
-    .vol-dur     { font-size: 7.5pt; font-weight: 700; color: var(--orange); flex-shrink: 0; margin-left: 8px; }
-    .vol-dates   { font-size: 7.5pt; color: var(--text-gray); margin-bottom: 2px; }
-    .vol-org     { font-size: 8pt; color: var(--text-gray); margin-bottom: 8px; }
-
-    .vol-bullets { list-style: none; padding: 0; }
+    .vol-bullets { list-style: none; }
 
     .vol-bullets li {
-      font-size: 11pt;
+      font-size: 1rem;
       color: var(--text-mid);
       line-height: 1.5;
-      padding-left: 13px;
+      padding-left: 14px;
       position: relative;
-      margin-bottom: 3px;
-    }
-
-    .vol-bullets li::before {
-      content: '▪';
-      position: absolute;
-      left: 0;
-      color: var(--orange);
-    }
-
-    /* ── INTERESTS ──────────────────────────────── */
-    .interests-grid {
-      display: grid;
-      grid-template-columns: repeat(6, 1fr);
-      gap: 4px;
-    }
-
-    .interest-item { text-align: center; }
-
-    .interest-emoji {
-      font-size: 18pt;
-      display: block;
       margin-bottom: 4px;
-      line-height: 1;
     }
 
-    .interest-label {
-      font-size: 6pt;
-      font-weight: 800;
-      text-transform: uppercase;
-      letter-spacing: 0.06em;
-      color: var(--orange-dark);
-    }
+    .vol-bullets li::before { content: '▪'; position: absolute; left: 0; color: var(--orange); }
 
-    .interest-sub {
-      font-size: 6pt;
-      color: var(--text-gray);
-    }
+    /* ── INTERESTS ───────────────────────────────── */
+    .interests-grid { display: grid; grid-template-columns: repeat(6, 1fr); gap: 6px; }
+    .interest-item  { text-align: center; }
+    .interest-emoji { font-size: 1.6rem; display: block; margin-bottom: 4px; line-height: 1; }
+    .interest-label { font-size: 0.6rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.06em; color: var(--orange-dark); }
+    .interest-sub   { font-size: 0.58rem; color: var(--text-gray); }
 
-    /* ── FOOTER BAR ─────────────────────────────── */
+    /* ── FOOTER BAR ──────────────────────────────── */
     .footer-bar {
-      flex-shrink: 0;
-      height: 0.16in;
-      background: var(--border);
-      display: flex;
-      align-items: center;
-      padding: 0 0.34in;
-    }
-
-    .footer-accent {
-      height: 3px;
-      width: 3in;
+      height: 10px;
       background: linear-gradient(90deg, var(--orange-dark), var(--orange), #FFA040);
-      border-radius: 2px;
     }
 
-    /* ── HEADER RIGHT ───────────────────────────── */
-    .header-right {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 7px;
-      flex-shrink: 0;
-    }
+    /* ══════════════════════════════════════════════
+       MOBILE  (≤ 640px)
+    ══════════════════════════════════════════════ */
+    @media (max-width: 640px) {
+      .resume { box-shadow: none; }
 
-    /* ── CTA BUTTONS ────────────────────────────── */
-    .cta-buttons {
-      display: flex;
-      flex-direction: row;
-      gap: 5px;
-    }
-
-    .cta-btn {
-      display: flex;
-      align-items: center;
-      gap: 4px;
-      padding: 4px 9px;
-      border-radius: 6px;
-      font-size: 7pt;
-      font-weight: 700;
-      cursor: pointer;
-      border: none;
-      text-decoration: none;
-      letter-spacing: 0.02em;
-      box-shadow: 0 1px 6px rgba(0,0,0,0.15);
-      transition: transform 0.1s, box-shadow 0.1s;
-      white-space: nowrap;
-    }
-
-    .cta-btn:hover {
-      transform: translateY(-1px);
-      box-shadow: 0 3px 10px rgba(0,0,0,0.2);
-    }
-
-    .cta-btn:active { transform: translateY(0); }
-
-    .cta-btn-print {
-      background: var(--white);
-      color: var(--orange-dark);
-      border: 1.5px solid var(--border);
-    }
-
-    .cta-btn-download {
-      background: var(--orange);
-      color: var(--white);
-    }
-
-    @media print {
-      .cta-buttons { display: none; }
-
-      html, body {
-        width: 7.9in;
-        height: 10.4in;
-        overflow: hidden;
-      }
-      .page {
-        width: 7.9in;
-        height: 10.4in;
-      }
       .header {
-        height: 2.1in;
-        padding: 0.22in 0.28in;
-      }
-      .sidebar { width: 2.2in; }
-      .footer-bar { height: 0.13in; }
-    }
-
-    @media screen and (max-width: 680px) {
-      html, body {
-        width: 100%;
-        height: auto;
-        overflow: visible;
-      }
-
-      .page {
-        width: 100%;
-        height: auto;
-        min-height: 100vh;
-      }
-
-      /* Header */
-      .header {
-        height: auto;
-        padding: 20px 16px 18px;
-        flex-wrap: wrap;
-        gap: 14px;
-        align-items: flex-start;
-      }
-
-      .header h1 { font-size: 26pt; }
-
-      .header-tagline {
-        font-size: 7.5pt;
-        letter-spacing: 0.1em;
-        margin-bottom: 8px;
-      }
-
-      .header-quote { font-size: 8pt; margin-bottom: 10px; }
-
-      .contact-row {
-        font-size: 10pt;
-        gap: 10px;
         flex-direction: column;
-        margin-top: 10px;
+        align-items: flex-start;
+        padding: 1.25rem 1.1rem 1rem;
+        gap: 1rem;
       }
 
-      .header-right { flex-direction: column-reverse; gap: 10px; }
-      .cta-buttons { flex-direction: column; width: 84px; }
-      .cta-btn { justify-content: center; font-size: 9pt; padding: 7px 10px; }
-      .qr-box { width: 84px; padding: 8px; }
-      .qr-box svg { width: 64px; height: 64px; }
+      .header h1   { font-size: 2rem; }
+      .header-tagline { font-size: 0.65rem; letter-spacing: 0.1em; }
+      .header-quote   { font-size: 0.85rem; }
+      .contact-row    { font-size: 0.82rem; gap: 0.6rem; }
 
-      /* Body stacks vertically */
-      .body { flex-direction: column; }
+      .header-right {
+        flex-direction: column-reverse;
+        align-items: flex-start;
+        width: 100%;
+        gap: 0.75rem;
+      }
+
+      .cta-buttons { flex-direction: row; }
+      .cta-btn     { font-size: 0.75rem; padding: 7px 14px; }
+
+      .qr-box svg  { width: 64px; height: 64px; }
+
+      .about-section { padding: 1.1rem; }
+      .about-text    { font-size: 0.95rem; }
+      .about-tagline { font-size: 0.875rem; }
+
+      .two-col {
+        grid-template-columns: 1fr;
+      }
 
       .sidebar {
-        width: 100%;
         border-right: none;
         border-bottom: 2px solid var(--border);
-        padding: 16px;
-        gap: 16px;
-        justify-content: flex-start;
+        padding: 1.1rem;
+        gap: 1.1rem;
       }
 
-      .main {
-        padding: 16px;
-        gap: 16px;
-        justify-content: flex-start;
-      }
+      .main-content { padding: 1.1rem; gap: 1.1rem; }
 
-      /* Cards */
-      .card { padding: 12px 14px; border-radius: 10px; }
-
-      /* Section titles */
-      .section-title { font-size: 8pt; margin-bottom: 8px; }
-
-      /* Languages */
-      .lang-name  { font-size: 11pt; }
-      .lang-level { font-size: 8pt; }
-      .lang-note  { font-size: 8pt; }
+      .lang-name  { font-size: 1rem; }
+      .lang-level { font-size: 0.68rem; }
+      .lang-note  { font-size: 0.72rem; }
       .lang-bar-track { height: 8px; }
 
-      /* Education */
-      .edu-title  { font-size: 11pt; }
-      .edu-detail { font-size: 9pt; }
+      .edu-title  { font-size: 1rem; }
+      .edu-detail { font-size: 0.8rem; }
 
-      /* Tags */
-      .tag { font-size: 9pt; padding: 5px 12px; gap: 6px; }
-      .tags { gap: 7px 6px; }
+      .tag { font-size: 0.8rem; padding: 5px 12px; }
 
-      /* Eligibility */
-      .elig-row { font-size: 10pt; }
-      .check-circle { width: 22px; height: 22px; font-size: 13pt; }
+      .avail-grid { grid-template-columns: repeat(3, 1fr); gap: 8px; }
+      .avail-day  { font-size: 0.72rem; }
+      .avail-slot { font-size: 0.7rem; padding: 6px 2px; }
+      .avail-note, .avail-future { font-size: 0.65rem; }
 
-      /* About */
-      .about-text   { font-size: 12pt; line-height: 1.6; }
-      .about-tagline { font-size: 11pt; padding-top: 10px; }
+      .vol-title { font-size: 1rem; }
+      .vol-org   { font-size: 0.82rem; }
+      .vol-bullets li { font-size: 0.95rem; }
 
-      /* Availability — 3 columns on mobile */
-      .avail-grid {
-        grid-template-columns: repeat(3, 1fr);
-        gap: 8px;
-      }
-      .avail-day  { font-size: 8.5pt; margin-bottom: 5px; }
-      .avail-slot { font-size: 8pt; padding: 5px 2px; border-radius: 6px; }
-      .avail-note { font-size: 7pt; }
-      .avail-future { font-size: 7pt; }
-
-      /* Volunteer */
-      .vol-title  { font-size: 11pt; }
-      .vol-dur    { font-size: 9pt; }
-      .vol-dates  { font-size: 9pt; }
-      .vol-org    { font-size: 9.5pt; }
-      .vol-bullets li { font-size: 11pt; line-height: 1.55; margin-bottom: 5px; }
-
-      /* Interests — 3 columns on mobile */
       .interests-grid { grid-template-columns: repeat(3, 1fr); gap: 10px; }
-      .interest-emoji { font-size: 22pt; }
-      .interest-label { font-size: 8pt; }
-      .interest-sub   { font-size: 7.5pt; }
+      .interest-emoji { font-size: 2rem; }
+      .interest-label { font-size: 0.68rem; }
+    }
 
-      /* Footer */
-      .footer-bar { height: 20px; }
-      .footer-accent { width: 60%; }
+    /* ══════════════════════════════════════════════
+       PRINT — one letter page
+    ══════════════════════════════════════════════ */
+    @page { size: letter; margin: 0.3in; }
+
+    @media print {
+      html, body { font-size: 9px; background: white; }
+
+      .cta-buttons { display: none; }
+
+      .resume {
+        max-width: none;
+        width: 100%;
+        box-shadow: none;
+      }
+
+      .header {
+        padding: 0.18in 0.22in 0.14in;
+        gap: 0.15in;
+      }
+
+      .header h1      { font-size: 2.6rem; }
+      .header-tagline { font-size: 0.6rem; margin-bottom: 0.1rem; }
+      .header-quote   { font-size: 0.75rem; margin-bottom: 0.5rem; }
+      .contact-row    { font-size: 0.78rem; gap: 0.6rem; }
+      .badge          { font-size: 0.55rem; padding: 2px 9px; margin-bottom: 0.3rem; }
+
+      .qr-box svg  { width: 68px; height: 68px; }
+      .qr-box      { padding: 7px; }
+
+      .about-section { padding: 0.12in 0.22in; }
+      .about-text    { font-size: 0.88rem; line-height: 1.5; margin-bottom: 0.4rem; }
+      .about-tagline { font-size: 0.8rem; padding-top: 0.3rem; }
+
+      .two-col { grid-template-columns: 1.75in 1fr; }
+
+      .sidebar      { padding: 0.12in 0.14in; gap: 0.12in; }
+      .main-content { padding: 0.12in 0.16in; gap: 0.12in; }
+
+      .card { padding: 0.08in 0.1in; border-radius: 6px; }
+
+      .section-title { font-size: 0.55rem; margin-bottom: 0.3rem; }
+
+      .lang-name  { font-size: 0.8rem; }
+      .lang-level { font-size: 0.55rem; }
+      .lang-note  { font-size: 0.6rem; margin-bottom: 3px; }
+
+      .edu-title  { font-size: 0.8rem; }
+      .edu-detail { font-size: 0.65rem; }
+      .edu-gap    { height: 5px; }
+      .pill       { font-size: 0.55rem; padding: 1px 7px; }
+
+      .tag { font-size: 0.65rem; padding: 3px 7px; }
+      .tags { gap: 4px 3px; }
+
+      .elig-row { font-size: 0.75rem; }
+      .check-circle { width: 16px; height: 16px; font-size: 0.65rem; }
+
+      .avail-grid { gap: 4px; }
+      .avail-day  { font-size: 0.58rem; margin-bottom: 3px; }
+      .avail-slot { font-size: 0.55rem; padding: 3px 1px; border-radius: 4px; margin-bottom: 2px; }
+      .avail-note, .avail-future { font-size: 0.52rem; margin-top: 2px; }
+
+      .vol-title { font-size: 0.85rem; }
+      .vol-dur   { font-size: 0.65rem; }
+      .vol-dates { font-size: 0.65rem; }
+      .vol-org   { font-size: 0.7rem; margin-bottom: 0.3rem; }
+      .vol-bullets li { font-size: 0.82rem; line-height: 1.4; margin-bottom: 2px; }
+
+      .interests-grid { gap: 4px; }
+      .interest-emoji { font-size: 1.2rem; margin-bottom: 2px; }
+      .interest-label { font-size: 0.55rem; }
+      .interest-sub   { font-size: 0.52rem; }
+
+      .footer-bar { height: 6px; }
     }
   </style>
 </head>
 <body>
-<div class="page">
+<div class="resume">
 
-  <!-- ══ HEADER ══════════════════════════════════════════ -->
-  <div class="header">
-    <div class="header-left">
+  <!-- ══ HEADER ══════════════════════════════════ -->
+  <header class="header">
+    <div class="header-main">
       <div class="badge">Available Now</div>
       <h1>Oscar Rodriguez</h1>
       <div class="header-tagline">Hospitality &nbsp;·&nbsp; Retail &nbsp;·&nbsp; Back-of-House &nbsp;·&nbsp; Barista &nbsp;·&nbsp; Hands-On</div>
+      <div class="header-quote">Hungry to learn. Ready to work. On time, every time.</div>
       <div class="contact-row">
         <span><span class="icon">📞</span>(224) 669-8336</span>
         <span><span class="icon">✉️</span>oscar00002@icloud.com</span>
@@ -658,51 +524,53 @@
       </div>
     </div>
 
-    <!-- QR + CTA buttons -->
     <div class="header-right">
       <div class="cta-buttons">
         <button class="cta-btn cta-btn-print" onclick="window.print()">🖨️ Print</button>
         <a class="cta-btn cta-btn-download" href="oscar-resume.pdf" download="Oscar-Rodriguez-Resume.pdf">⬇️ PDF</a>
       </div>
-    <div class="qr-box">
-      <svg viewBox="0 0 8.1 8.1" xmlns="http://www.w3.org/2000/svg">
-        <path d="M0.3,0.3H0.6V0.6H0.3zM0.6,0.3H0.9V0.6H0.6zM0.9,0.3H1.2V0.6H0.9zM1.2,0.3H1.5V0.6H1.2zM1.5,0.3H1.8V0.6H1.5zM1.8,0.3H2.1V0.6H1.8zM2.1,0.3H2.4V0.6H2.1zM2.7,0.3H3V0.6H2.7zM3,0.3H3.3V0.6H3zM3.6,0.3H3.9V0.6H3.6zM3.9,0.3H4.2V0.6H3.9zM4.8,0.3H5.1V0.6H4.8zM5.1,0.3H5.4V0.6H5.1zM5.7,0.3H6V0.6H5.7zM6,0.3H6.3V0.6H6zM6.3,0.3H6.6V0.6H6.3zM6.6,0.3H6.9V0.6H6.6zM6.9,0.3H7.2V0.6H6.9zM7.2,0.3H7.5V0.6H7.2zM7.5,0.3H7.8V0.6H7.5zM0.3,0.6H0.6V0.9H0.3zM2.1,0.6H2.4V0.9H2.1zM2.7,0.6H3V0.9H2.7zM3.6,0.6H3.9V0.9H3.6zM3.9,0.6H4.2V0.9H3.9zM4.5,0.6H4.8V0.9H4.5zM4.8,0.6H5.1V0.9H4.8zM5.7,0.6H6V0.9H5.7zM7.5,0.6H7.8V0.9H7.5zM0.3,0.9H0.6V1.2H0.3zM0.9,0.9H1.2V1.2H0.9zM1.2,0.9H1.5V1.2H1.2zM1.5,0.9H1.8V1.2H1.5zM2.1,0.9H2.4V1.2H2.1zM3.3,0.9H3.6V1.2H3.3zM3.6,0.9H3.9V1.2H3.6zM4.2,0.9H4.5V1.2H4.2zM4.5,0.9H4.8V1.2H4.5zM4.8,0.9H5.1V1.2H4.8zM5.7,0.9H6V1.2H5.7zM6.3,0.9H6.6V1.2H6.3zM6.6,0.9H6.9V1.2H6.6zM6.9,0.9H7.2V1.2H6.9zM7.5,0.9H7.8V1.2H7.5zM0.3,1.2H0.6V1.5H0.3zM0.9,1.2H1.2V1.5H0.9zM1.2,1.2H1.5V1.5H1.2zM1.5,1.2H1.8V1.5H1.5zM2.1,1.2H2.4V1.5H2.1zM2.7,1.2H3V1.5H2.7zM3,1.2H3.3V1.5H3zM3.3,1.2H3.6V1.5H3.3zM3.6,1.2H3.9V1.5H3.6zM5.7,1.2H6V1.5H5.7zM6.3,1.2H6.6V1.5H6.3zM6.6,1.2H6.9V1.5H6.6zM6.9,1.2H7.2V1.5H6.9zM7.5,1.2H7.8V1.5H7.5zM0.3,1.5H0.6V1.8H0.3zM0.9,1.5H1.2V1.8H0.9zM1.2,1.5H1.5V1.8H1.2zM1.5,1.5H1.8V1.8H1.5zM2.1,1.5H2.4V1.8H2.1zM3,1.5H3.3V1.8H3zM3.3,1.5H3.6V1.8H3.3zM4.2,1.5H4.5V1.8H4.2zM5.7,1.5H6V1.8H5.7zM6.3,1.5H6.6V1.8H6.3zM6.6,1.5H6.9V1.8H6.6zM6.9,1.5H7.2V1.8H6.9zM7.5,1.5H7.8V1.8H7.5zM0.3,1.8H0.6V2.1H0.3zM2.1,1.8H2.4V2.1H2.1zM3,1.8H3.3V2.1H3zM3.3,1.8H3.6V2.1H3.3zM3.6,1.8H3.9V2.1H3.6zM3.9,1.8H4.2V2.1H3.9zM4.5,1.8H4.8V2.1H4.5zM5.1,1.8H5.4V2.1H5.1zM5.7,1.8H6V2.1H5.7zM7.5,1.8H7.8V2.1H7.5zM0.3,2.1H0.6V2.4H0.3zM0.6,2.1H0.9V2.4H0.6zM0.9,2.1H1.2V2.4H0.9zM1.2,2.1H1.5V2.4H1.2zM1.5,2.1H1.8V2.4H1.5zM1.8,2.1H2.1V2.4H1.8zM2.1,2.1H2.4V2.4H2.1zM2.7,2.1H3V2.4H2.7zM3.3,2.1H3.6V2.4H3.3zM3.9,2.1H4.2V2.4H3.9zM4.5,2.1H4.8V2.4H4.5zM5.1,2.1H5.4V2.4H5.1zM5.7,2.1H6V2.4H5.7zM6,2.1H6.3V2.4H6zM6.3,2.1H6.6V2.4H6.3zM6.6,2.1H6.9V2.4H6.6zM6.9,2.1H7.2V2.4H6.9zM7.2,2.1H7.5V2.4H7.2zM7.5,2.1H7.8V2.4H7.5zM2.7,2.4H3V2.7H2.7zM3,2.4H3.3V2.7H3zM3.6,2.4H3.9V2.7H3.6zM3.9,2.4H4.2V2.7H3.9zM4.2,2.4H4.5V2.7H4.2zM4.5,2.4H4.8V2.7H4.5zM4.8,2.4H5.1V2.7H4.8zM5.1,2.4H5.4V2.7H5.1zM0.3,2.7H0.6V3H0.3zM0.9,2.7H1.2V3H0.9zM1.2,2.7H1.5V3H1.2zM1.8,2.7H2.1V3H1.8zM2.1,2.7H2.4V3H2.1zM2.4,2.7H2.7V3H2.4zM4.2,2.7H4.5V3H4.2zM4.5,2.7H4.8V3H4.5zM5.7,2.7H6V3H5.7zM6.6,2.7H6.9V3H6.6zM7.2,2.7H7.5V3H7.2zM7.5,2.7H7.8V3H7.5zM0.3,3H0.6V3.3H0.3zM0.9,3H1.2V3.3H0.9zM1.2,3H1.5V3.3H1.2zM1.8,3H2.1V3.3H1.8zM2.7,3H3V3.3H2.7zM3,3H3.3V3.3H3zM5.4,3H5.7V3.3H5.4zM6.9,3H7.2V3.3H6.9zM1.5,3.3H1.8V3.6H1.5zM2.1,3.3H2.4V3.6H2.1zM2.7,3.3H3V3.6H2.7zM3.3,3.3H3.6V3.6H3.3zM3.6,3.3H3.9V3.6H3.6zM3.9,3.3H4.2V3.6H3.9zM4.5,3.3H4.8V3.6H4.5zM5.1,3.3H5.4V3.6H5.1zM6.3,3.3H6.6V3.6H6.3zM0.6,3.6H0.9V3.9H0.6zM0.9,3.6H1.2V3.9H0.9zM1.5,3.6H1.8V3.9H1.5zM1.8,3.6H2.1V3.9H1.8zM2.4,3.6H2.7V3.9H2.4zM3,3.6H3.3V3.9H3zM3.9,3.6H4.2V3.9H3.9zM4.2,3.6H4.5V3.9H4.2zM4.5,3.6H4.8V3.9H4.5zM4.8,3.6H5.1V3.9H4.8zM5.1,3.6H5.4V3.9H5.1zM5.7,3.6H6V3.9H5.7zM6.9,3.6H7.2V3.9H6.9zM7.2,3.6H7.5V3.9H7.2zM0.6,3.9H0.9V4.2H0.6zM1.2,3.9H1.5V4.2H1.2zM1.5,3.9H1.8V4.2H1.5zM2.1,3.9H2.4V4.2H2.1zM2.4,3.9H2.7V4.2H2.4zM4.8,3.9H5.1V4.2H4.8zM5.1,3.9H5.4V4.2H5.1zM5.7,3.9H6V4.2H5.7zM6,3.9H6.3V4.2H6zM6.3,3.9H6.6V4.2H6.3zM6.9,3.9H7.2V4.2H6.9zM7.2,3.9H7.5V4.2H7.2zM7.5,3.9H7.8V4.2H7.5zM0.6,4.2H0.9V4.5H0.6zM1.5,4.2H1.8V4.5H1.5zM2.4,4.2H2.7V4.5H2.4zM2.7,4.2H3V4.5H2.7zM3.3,4.2H3.6V4.5H3.3zM3.6,4.2H3.9V4.5H3.6zM4.2,4.2H4.5V4.5H4.2zM4.8,4.2H5.1V4.5H4.8zM5.7,4.2H6V4.5H5.7zM6.3,4.2H6.6V4.5H6.3zM6.9,4.2H7.2V4.5H6.9zM7.2,4.2H7.5V4.5H7.2zM7.5,4.2H7.8V4.5H7.5zM0.6,4.5H0.9V4.8H0.6zM1.5,4.5H1.8V4.8H1.5zM1.8,4.5H2.1V4.8H1.8zM2.1,4.5H2.4V4.8H2.1zM2.4,4.5H2.7V4.8H2.4zM2.7,4.5H3V4.8H2.7zM3,4.5H3.3V4.8H3zM3.9,4.5H4.2V4.8H3.9zM4.5,4.5H4.8V4.8H4.5zM5.4,4.5H5.7V4.8H5.4zM6,4.5H6.3V4.8H6zM6.3,4.5H6.6V4.8H6.3zM7.2,4.5H7.5V4.8H7.2zM0.3,4.8H0.6V5.1H0.3zM0.9,4.8H1.2V5.1H0.9zM1.2,4.8H1.5V5.1H1.2zM1.5,4.8H1.8V5.1H1.5zM2.4,4.8H2.7V5.1H2.4zM3,4.8H3.3V5.1H3zM3.9,4.8H4.2V5.1H3.9zM4.2,4.8H4.5V5.1H4.2zM6.6,4.8H6.9V5.1H6.6zM7.5,4.8H7.8V5.1H7.5zM2.1,5.1H2.4V5.4H2.1zM2.4,5.1H2.7V5.4H2.4zM2.7,5.1H3V5.4H2.7zM3,5.1H3.3V5.4H3zM3.6,5.1H3.9V5.4H3.6zM5.1,5.1H5.4V5.4H5.1zM5.4,5.1H5.7V5.4H5.4zM5.7,5.1H6V5.4H5.7zM6,5.1H6.3V5.4H6zM6.3,5.1H6.6V5.4H6.3zM6.9,5.1H7.2V5.4H6.9zM2.7,5.4H3V5.7H2.7zM3,5.4H3.3V5.7H3zM3.3,5.4H3.6V5.7H3.3zM3.9,5.4H4.2V5.7H3.9zM4.2,5.4H4.5V5.7H4.2zM4.8,5.4H5.1V5.7H4.8zM5.1,5.4H5.4V5.7H5.1zM6.3,5.4H6.6V5.7H6.3zM7.2,5.4H7.5V5.7H7.2zM7.5,5.4H7.8V5.7H7.5zM0.3,5.7H0.6V6H0.3zM0.6,5.7H0.9V6H0.6zM0.9,5.7H1.2V6H0.9zM1.2,5.7H1.5V6H1.2zM1.5,5.7H1.8V6H1.5zM1.8,5.7H2.1V6H1.8zM2.1,5.7H2.4V6H2.1zM2.7,5.7H3V6H2.7zM3.6,5.7H3.9V6H3.6zM3.9,5.7H4.2V6H3.9zM5.1,5.7H5.4V6H5.1zM5.7,5.7H6V6H5.7zM6.3,5.7H6.6V6H6.3zM6.9,5.7H7.2V6H6.9zM7.2,5.7H7.5V6H7.2zM7.5,5.7H7.8V6H7.5zM0.3,6H0.6V6.3H0.3zM2.1,6H2.4V6.3H2.1zM2.7,6H3V6.3H2.7zM3,6H3.3V6.3H3zM3.3,6H3.6V6.3H3.3zM3.9,6H4.2V6.3H3.9zM5.1,6H5.4V6.3H5.1zM6.3,6H6.6V6.3H6.3zM7.2,6H7.5V6.3H7.2zM0.3,6.3H0.6V6.6H0.3zM0.9,6.3H1.2V6.6H0.9zM1.2,6.3H1.5V6.6H1.2zM1.5,6.3H1.8V6.6H1.5zM2.1,6.3H2.4V6.6H2.1zM3.3,6.3H3.6V6.6H3.3zM3.6,6.3H3.9V6.6H3.6zM3.9,6.3H4.2V6.6H3.9zM4.2,6.3H4.5V6.6H4.2zM5.1,6.3H5.4V6.6H5.1zM5.4,6.3H5.7V6.6H5.4zM5.7,6.3H6V6.6H5.7zM6,6.3H6.3V6.6H6zM6.3,6.3H6.6V6.6H6.3zM6.6,6.3H6.9V6.6H6.6zM0.3,6.6H0.6V6.9H0.3zM0.9,6.6H1.2V6.9H0.9zM1.2,6.6H1.5V6.9H1.2zM1.5,6.6H1.8V6.9H1.5zM2.1,6.6H2.4V6.9H2.1zM2.7,6.6H3V6.9H2.7zM3.3,6.6H3.6V6.9H3.3zM3.9,6.6H4.2V6.9H3.9zM4.2,6.6H4.5V6.9H4.2zM4.5,6.6H4.8V6.9H4.5zM4.8,6.6H5.1V6.9H4.8zM5.7,6.6H6V6.9H5.7zM6,6.6H6.3V6.9H6zM6.3,6.6H6.6V6.9H6.3zM6.6,6.6H6.9V6.9H6.6zM7.2,6.6H7.5V6.9H7.2zM7.5,6.6H7.8V6.9H7.5zM0.3,6.9H0.6V7.2H0.3zM0.9,6.9H1.2V7.2H0.9zM1.2,6.9H1.5V7.2H1.2zM1.5,6.9H1.8V7.2H1.5zM2.1,6.9H2.4V7.2H2.1zM2.7,6.9H3V7.2H2.7zM3.3,6.9H3.6V7.2H3.3zM3.6,6.9H3.9V7.2H3.6zM3.9,6.9H4.2V7.2H3.9zM4.2,6.9H4.5V7.2H4.2zM5.1,6.9H5.4V7.2H5.1zM5.7,6.9H6V7.2H5.7zM6.3,6.9H6.6V7.2H6.3zM6.6,6.9H6.9V7.2H6.6zM7.2,6.9H7.5V7.2H7.2zM0.3,7.2H0.6V7.5H0.3zM2.1,7.2H2.4V7.5H2.1zM3,7.2H3.3V7.5H3zM3.3,7.2H3.6V7.5H3.3zM4.8,7.2H5.1V7.5H4.8zM5.7,7.2H6V7.5H5.7zM6,7.2H6.3V7.5H6zM6.3,7.2H6.6V7.5H6.3zM6.9,7.2H7.2V7.5H6.9zM0.3,7.5H0.6V7.8H0.3zM0.6,7.5H0.9V7.8H0.6zM0.9,7.5H1.2V7.8H0.9zM1.2,7.5H1.5V7.8H1.2zM1.5,7.5H1.8V7.8H1.5zM1.8,7.5H2.1V7.8H1.8zM2.1,7.5H2.4V7.8H2.1zM2.7,7.5H3V7.8H2.7zM3.9,7.5H4.2V7.8H3.9zM4.5,7.5H4.8V7.8H4.5zM4.8,7.5H5.1V7.8H4.8zM5.4,7.5H5.7V7.8H5.4zM5.7,7.5H6V7.8H5.7zM6.9,7.5H7.2V7.8H6.9zM7.2,7.5H7.5V7.8H7.2zM7.5,7.5H7.8V7.8H7.5z" fill="#000000" fill-rule="nonzero" stroke="none"/>
-      </svg>
-      <div class="qr-label">Scan to Call</div>
+      <div class="qr-box">
+        <svg viewBox="0 0 8.1 8.1" xmlns="http://www.w3.org/2000/svg">
+          <path d="M0.3,0.3H0.6V0.6H0.3zM0.6,0.3H0.9V0.6H0.6zM0.9,0.3H1.2V0.6H0.9zM1.2,0.3H1.5V0.6H1.2zM1.5,0.3H1.8V0.6H1.5zM1.8,0.3H2.1V0.6H1.8zM2.1,0.3H2.4V0.6H2.1zM2.7,0.3H3V0.6H2.7zM3,0.3H3.3V0.6H3zM3.6,0.3H3.9V0.6H3.6zM3.9,0.3H4.2V0.6H3.9zM4.8,0.3H5.1V0.6H4.8zM5.1,0.3H5.4V0.6H5.1zM5.7,0.3H6V0.6H5.7zM6,0.3H6.3V0.6H6zM6.3,0.3H6.6V0.6H6.3zM6.6,0.3H6.9V0.6H6.6zM6.9,0.3H7.2V0.6H6.9zM7.2,0.3H7.5V0.6H7.2zM7.5,0.3H7.8V0.6H7.5zM0.3,0.6H0.6V0.9H0.3zM2.1,0.6H2.4V0.9H2.1zM2.7,0.6H3V0.9H2.7zM3.6,0.6H3.9V0.9H3.6zM3.9,0.6H4.2V0.9H3.9zM4.5,0.6H4.8V0.9H4.5zM4.8,0.6H5.1V0.9H4.8zM5.7,0.6H6V0.9H5.7zM7.5,0.6H7.8V0.9H7.5zM0.3,0.9H0.6V1.2H0.3zM0.9,0.9H1.2V1.2H0.9zM1.2,0.9H1.5V1.2H1.2zM1.5,0.9H1.8V1.2H1.5zM2.1,0.9H2.4V1.2H2.1zM3.3,0.9H3.6V1.2H3.3zM3.6,0.9H3.9V1.2H3.6zM4.2,0.9H4.5V1.2H4.2zM4.5,0.9H4.8V1.2H4.5zM4.8,0.9H5.1V1.2H4.8zM5.7,0.9H6V1.2H5.7zM6.3,0.9H6.6V1.2H6.3zM6.6,0.9H6.9V1.2H6.6zM6.9,0.9H7.2V1.2H6.9zM7.5,0.9H7.8V1.2H7.5zM0.3,1.2H0.6V1.5H0.3zM0.9,1.2H1.2V1.5H0.9zM1.2,1.2H1.5V1.5H1.2zM1.5,1.2H1.8V1.5H1.5zM2.1,1.2H2.4V1.5H2.1zM2.7,1.2H3V1.5H2.7zM3,1.2H3.3V1.5H3zM3.3,1.2H3.6V1.5H3.3zM3.6,1.2H3.9V1.5H3.6zM5.7,1.2H6V1.5H5.7zM6.3,1.2H6.6V1.5H6.3zM6.6,1.2H6.9V1.5H6.6zM6.9,1.2H7.2V1.5H6.9zM7.5,1.2H7.8V1.5H7.5zM0.3,1.5H0.6V1.8H0.3zM0.9,1.5H1.2V1.8H0.9zM1.2,1.5H1.5V1.8H1.2zM1.5,1.5H1.8V1.8H1.5zM2.1,1.5H2.4V1.8H2.1zM3,1.5H3.3V1.8H3zM3.3,1.5H3.6V1.8H3.3zM4.2,1.5H4.5V1.8H4.2zM5.7,1.5H6V1.8H5.7zM6.3,1.5H6.6V1.8H6.3zM6.6,1.5H6.9V1.8H6.6zM6.9,1.5H7.2V1.8H6.9zM7.5,1.5H7.8V1.8H7.5zM0.3,1.8H0.6V2.1H0.3zM2.1,1.8H2.4V2.1H2.1zM3,1.8H3.3V2.1H3zM3.3,1.8H3.6V2.1H3.3zM3.6,1.8H3.9V2.1H3.6zM3.9,1.8H4.2V2.1H3.9zM4.5,1.8H4.8V2.1H4.5zM5.1,1.8H5.4V2.1H5.1zM5.7,1.8H6V2.1H5.7zM7.5,1.8H7.8V2.1H7.5zM0.3,2.1H0.6V2.4H0.3zM0.6,2.1H0.9V2.4H0.6zM0.9,2.1H1.2V2.4H0.9zM1.2,2.1H1.5V2.4H1.2zM1.5,2.1H1.8V2.4H1.5zM1.8,2.1H2.1V2.4H1.8zM2.1,2.1H2.4V2.4H2.1zM2.7,2.1H3V2.4H2.7zM3.3,2.1H3.6V2.4H3.3zM3.9,2.1H4.2V2.4H3.9zM4.5,2.1H4.8V2.4H4.5zM5.1,2.1H5.4V2.4H5.1zM5.7,2.1H6V2.4H5.7zM6,2.1H6.3V2.4H6zM6.3,2.1H6.6V2.4H6.3zM6.6,2.1H6.9V2.4H6.6zM6.9,2.1H7.2V2.4H6.9zM7.2,2.1H7.5V2.4H7.2zM7.5,2.1H7.8V2.4H7.5zM2.7,2.4H3V2.7H2.7zM3,2.4H3.3V2.7H3zM3.6,2.4H3.9V2.7H3.6zM3.9,2.4H4.2V2.7H3.9zM4.2,2.4H4.5V2.7H4.2zM4.5,2.4H4.8V2.7H4.5zM4.8,2.4H5.1V2.7H4.8zM5.1,2.4H5.4V2.7H5.1zM0.3,2.7H0.6V3H0.3zM0.9,2.7H1.2V3H0.9zM1.2,2.7H1.5V3H1.2zM1.8,2.7H2.1V3H1.8zM2.1,2.7H2.4V3H2.1zM2.4,2.7H2.7V3H2.4zM4.2,2.7H4.5V3H4.2zM4.5,2.7H4.8V3H4.5zM5.7,2.7H6V3H5.7zM6.6,2.7H6.9V3H6.6zM7.2,2.7H7.5V3H7.2zM7.5,2.7H7.8V3H7.5zM0.3,3H0.6V3.3H0.3zM0.9,3H1.2V3.3H0.9zM1.2,3H1.5V3.3H1.2zM1.8,3H2.1V3.3H1.8zM2.7,3H3V3.3H2.7zM3,3H3.3V3.3H3zM5.4,3H5.7V3.3H5.4zM6.9,3H7.2V3.3H6.9zM1.5,3.3H1.8V3.6H1.5zM2.1,3.3H2.4V3.6H2.1zM2.7,3.3H3V3.6H2.7zM3.3,3.3H3.6V3.6H3.3zM3.6,3.3H3.9V3.6H3.6zM3.9,3.3H4.2V3.6H3.9zM4.5,3.3H4.8V3.6H4.5zM5.1,3.3H5.4V3.6H5.1zM6.3,3.3H6.6V3.6H6.3zM0.6,3.6H0.9V3.9H0.6zM0.9,3.6H1.2V3.9H0.9zM1.5,3.6H1.8V3.9H1.5zM1.8,3.6H2.1V3.9H1.8zM2.4,3.6H2.7V3.9H2.4zM3,3.6H3.3V3.9H3zM3.9,3.6H4.2V3.9H3.9zM4.2,3.6H4.5V3.9H4.2zM4.5,3.6H4.8V3.9H4.5zM4.8,3.6H5.1V3.9H4.8zM5.1,3.6H5.4V3.9H5.1zM5.7,3.6H6V3.9H5.7zM6.9,3.6H7.2V3.9H6.9zM7.2,3.6H7.5V3.9H7.2zM0.6,3.9H0.9V4.2H0.6zM1.2,3.9H1.5V4.2H1.2zM1.5,3.9H1.8V4.2H1.5zM2.1,3.9H2.4V4.2H2.1zM2.4,3.9H2.7V4.2H2.4zM4.8,3.9H5.1V4.2H4.8zM5.1,3.9H5.4V4.2H5.1zM5.7,3.9H6V4.2H5.7zM6,3.9H6.3V4.2H6zM6.3,3.9H6.6V4.2H6.3zM6.9,3.9H7.2V4.2H6.9zM7.2,3.9H7.5V4.2H7.2zM7.5,3.9H7.8V4.2H7.5zM0.6,4.2H0.9V4.5H0.6zM1.5,4.2H1.8V4.5H1.5zM2.4,4.2H2.7V4.5H2.4zM2.7,4.2H3V4.5H2.7zM3.3,4.2H3.6V4.5H3.3zM3.6,4.2H3.9V4.5H3.6zM4.2,4.2H4.5V4.5H4.2zM4.8,4.2H5.1V4.5H4.8zM5.7,4.2H6V4.5H5.7zM6.3,4.2H6.6V4.5H6.3zM6.9,4.2H7.2V4.5H6.9zM7.2,4.2H7.5V4.5H7.2zM7.5,4.2H7.8V4.5H7.5zM0.6,4.5H0.9V4.8H0.6zM1.5,4.5H1.8V4.8H1.5zM1.8,4.5H2.1V4.8H1.8zM2.1,4.5H2.4V4.8H2.1zM2.4,4.5H2.7V4.8H2.4zM2.7,4.5H3V4.8H2.7zM3,4.5H3.3V4.8H3zM3.9,4.5H4.2V4.8H3.9zM4.5,4.5H4.8V4.8H4.5zM5.4,4.5H5.7V4.8H5.4zM6,4.5H6.3V4.8H6zM6.3,4.5H6.6V4.8H6.3zM7.2,4.5H7.5V4.8H7.2zM0.3,4.8H0.6V5.1H0.3zM0.9,4.8H1.2V5.1H0.9zM1.2,4.8H1.5V5.1H1.2zM1.5,4.8H1.8V5.1H1.5zM2.4,4.8H2.7V5.1H2.4zM3,4.8H3.3V5.1H3zM3.9,4.8H4.2V5.1H3.9zM4.2,4.8H4.5V5.1H4.2zM6.6,4.8H6.9V5.1H6.6zM7.5,4.8H7.8V5.1H7.5zM2.1,5.1H2.4V5.4H2.1zM2.4,5.1H2.7V5.4H2.4zM2.7,5.1H3V5.4H2.7zM3,5.1H3.3V5.4H3zM3.6,5.1H3.9V5.4H3.6zM5.1,5.1H5.4V5.4H5.1zM5.4,5.1H5.7V5.4H5.4zM5.7,5.1H6V5.4H5.7zM6,5.1H6.3V5.4H6zM6.3,5.1H6.6V5.4H6.3zM6.9,5.1H7.2V5.4H6.9zM2.7,5.4H3V5.7H2.7zM3,5.4H3.3V5.7H3zM3.3,5.4H3.6V5.7H3.3zM3.9,5.4H4.2V5.7H3.9zM4.2,5.4H4.5V5.7H4.2zM4.8,5.4H5.1V5.7H4.8zM5.1,5.4H5.4V5.7H5.1zM6.3,5.4H6.6V5.7H6.3zM7.2,5.4H7.5V5.7H7.2zM7.5,5.4H7.8V5.7H7.5zM0.3,5.7H0.6V6H0.3zM0.6,5.7H0.9V6H0.6zM0.9,5.7H1.2V6H0.9zM1.2,5.7H1.5V6H1.2zM1.5,5.7H1.8V6H1.5zM1.8,5.7H2.1V6H1.8zM2.1,5.7H2.4V6H2.1zM2.7,5.7H3V6H2.7zM3.6,5.7H3.9V6H3.6zM3.9,5.7H4.2V6H3.9zM5.1,5.7H5.4V6H5.1zM5.7,5.7H6V6H5.7zM6.3,5.7H6.6V6H6.3zM6.9,5.7H7.2V6H6.9zM7.2,5.7H7.5V6H7.2zM7.5,5.7H7.8V6H7.5zM0.3,6H0.6V6.3H0.3zM2.1,6H2.4V6.3H2.1zM2.7,6H3V6.3H2.7zM3,6H3.3V6.3H3zM3.3,6H3.6V6.3H3.3zM3.9,6H4.2V6.3H3.9zM5.1,6H5.4V6.3H5.1zM6.3,6H6.6V6.3H6.3zM7.2,6H7.5V6.3H7.2zM0.3,6.3H0.6V6.6H0.3zM0.9,6.3H1.2V6.6H0.9zM1.2,6.3H1.5V6.6H1.2zM1.5,6.3H1.8V6.6H1.5zM2.1,6.3H2.4V6.6H2.1zM3.3,6.3H3.6V6.6H3.3zM3.6,6.3H3.9V6.6H3.6zM3.9,6.3H4.2V6.6H3.9zM4.2,6.3H4.5V6.6H4.2zM5.1,6.3H5.4V6.6H5.1zM5.4,6.3H5.7V6.6H5.4zM5.7,6.3H6V6.6H5.7zM6,6.3H6.3V6.6H6zM6.3,6.3H6.6V6.6H6.3zM6.6,6.3H6.9V6.6H6.6zM0.3,6.6H0.6V6.9H0.3zM0.9,6.6H1.2V6.9H0.9zM1.2,6.6H1.5V6.9H1.2zM1.5,6.6H1.8V6.9H1.5zM2.1,6.6H2.4V6.9H2.1zM2.7,6.6H3V6.9H2.7zM3.3,6.6H3.6V6.9H3.3zM3.9,6.6H4.2V6.9H3.9zM4.2,6.6H4.5V6.9H4.2zM4.5,6.6H4.8V6.9H4.5zM4.8,6.6H5.1V6.9H4.8zM5.7,6.6H6V6.9H5.7zM6,6.6H6.3V6.9H6zM6.3,6.6H6.6V6.9H6.3zM6.6,6.6H6.9V6.9H6.6zM7.2,6.6H7.5V6.9H7.2zM7.5,6.6H7.8V6.9H7.5zM0.3,6.9H0.6V7.2H0.3zM0.9,6.9H1.2V7.2H0.9zM1.2,6.9H1.5V7.2H1.2zM1.5,6.9H1.8V7.2H1.5zM2.1,6.9H2.4V7.2H2.1zM2.7,6.9H3V7.2H2.7zM3.3,6.9H3.6V7.2H3.3zM3.6,6.9H3.9V7.2H3.6zM3.9,6.9H4.2V7.2H3.9zM4.2,6.9H4.5V7.2H4.2zM5.1,6.9H5.4V7.2H5.1zM5.7,6.9H6V7.2H5.7zM6.3,6.9H6.6V7.2H6.3zM6.6,6.9H6.9V7.2H6.6zM7.2,6.9H7.5V7.2H7.2zM0.3,7.2H0.6V7.5H0.3zM2.1,7.2H2.4V7.5H2.1zM3,7.2H3.3V7.5H3zM3.3,7.2H3.6V7.5H3.3zM4.8,7.2H5.1V7.5H4.8zM5.7,7.2H6V7.5H5.7zM6,7.2H6.3V7.5H6zM6.3,7.2H6.6V7.5H6.3zM6.9,7.2H7.2V7.5H6.9zM0.3,7.5H0.6V7.8H0.3zM0.6,7.5H0.9V7.8H0.6zM0.9,7.5H1.2V7.8H0.9zM1.2,7.5H1.5V7.8H1.2zM1.5,7.5H1.8V7.8H1.5zM1.8,7.5H2.1V7.8H1.8zM2.1,7.5H2.4V7.8H2.1zM2.7,7.5H3V7.8H2.7zM3.9,7.5H4.2V7.8H3.9zM4.5,7.5H4.8V7.8H4.5zM4.8,7.5H5.1V7.8H4.8zM5.4,7.5H5.7V7.8H5.4zM5.7,7.5H6V7.8H5.7zM6.9,7.5H7.2V7.8H6.9zM7.2,7.5H7.5V7.8H7.2zM7.5,7.5H7.8V7.8H7.5z" fill="#000" fill-rule="nonzero" stroke="none"/>
+        </svg>
+        <div class="qr-label">Scan to Call</div>
+      </div>
     </div>
-    </div><!-- /header-right -->
-  </div>
+  </header>
 
-  <!-- ══ BODY ════════════════════════════════════════════ -->
-  <div class="body">
+  <!-- ══ ABOUT ME ════════════════════════════════ -->
+  <section class="about-section">
+    <div class="section-title">About Me</div>
+    <div class="card">
+      <p class="about-text">I'm looking for my first job in a supporting, back-of-house, barista (with training), or product/prep role where I can work with my hands and learn the craft. I'm at the gym every morning by 6:30&nbsp;AM &mdash; that same discipline is what I'll bring to your team. I love carpentry and cooking, have a sharp palate, and I'm the teammate you can count on to show up on time and follow through.</p>
+      <p class="about-tagline">Hungry to learn. Ready to work. On time, every time.</p>
+    </div>
+  </section>
 
-    <!-- ── SIDEBAR ─────────────────────────────────────── -->
-    <div class="sidebar">
+  <!-- ══ TWO-COLUMN BODY ══════════════════════════ -->
+  <div class="two-col">
+
+    <!-- ── SIDEBAR ──────────────────────────────── -->
+    <aside class="sidebar">
 
       <!-- Languages -->
       <div>
         <div class="section-title">Languages</div>
         <div class="card">
-          <!-- Spanish -->
           <div class="lang-block">
             <div class="lang-header">
               <span class="lang-name">Spanish</span>
               <span class="lang-level">Fluent</span>
             </div>
-            <div class="lang-bar-track">
-              <div class="lang-bar-fill" style="width:95%"></div>
-            </div>
+            <div class="lang-bar-track"><div class="lang-bar-fill" style="width:95%"></div></div>
           </div>
-          <!-- English -->
           <div class="lang-block">
             <div class="lang-header">
               <span class="lang-name">English</span>
               <span class="lang-level">Conversational</span>
             </div>
             <div class="lang-note">Actively improving &middot; ESL classes</div>
-            <div class="lang-bar-track">
-              <div class="lang-bar-fill" style="width:42%"></div>
-            </div>
+            <div class="lang-bar-track"><div class="lang-bar-fill" style="width:42%"></div></div>
           </div>
         </div>
       </div>
@@ -752,70 +620,46 @@
         </div>
       </div>
 
-    </div><!-- /sidebar -->
+    </aside>
 
-    <!-- ── MAIN ────────────────────────────────────────── -->
-    <div class="main">
-
-      <!-- About Me -->
-      <div>
-        <div class="section-title">About Me</div>
-        <div class="card">
-          <p class="about-text">
-            I'm looking for my first job in a supporting, back-of-house, barista (with training), or product/prep role where I can work with my hands and learn the craft. I'm at the gym every morning by 6:30&nbsp;AM &mdash; that same discipline is what I'll bring to your team. I love carpentry and cooking, have a sharp palate, and I'm the teammate you can count on to show up on time and follow through.
-          </p>
-          <p class="about-tagline">Hungry to learn. Ready to work. On time, every time.</p>
-        </div>
-      </div>
+    <!-- ── MAIN CONTENT ──────────────────────────── -->
+    <main class="main-content">
 
       <!-- Availability -->
       <div>
         <div class="section-title">Availability</div>
         <div class="card">
           <div class="avail-grid">
-
-            <!-- Mon -->
             <div class="avail-col">
               <div class="avail-day">Mon</div>
               <div class="avail-slot">Morning</div>
               <div class="avail-note">Until 11:30</div>
             </div>
-
-            <!-- Tue -->
             <div class="avail-col">
               <div class="avail-day">Tue</div>
-              <div class="avail-slot soft">Eve&shy;ning</div>
+              <div class="avail-slot soft">Evening</div>
               <div class="avail-note">From 4:00 PM</div>
               <div class="avail-future">All day May&nbsp;10+</div>
             </div>
-
-            <!-- Wed -->
             <div class="avail-col">
               <div class="avail-day">Wed</div>
               <div class="avail-slot">Morning</div>
               <div class="avail-note">Until 11:30</div>
             </div>
-
-            <!-- Thu -->
             <div class="avail-col">
               <div class="avail-day">Thu</div>
-              <div class="avail-slot soft">Eve&shy;ning</div>
+              <div class="avail-slot soft">Evening</div>
               <div class="avail-note">From 4:00 PM</div>
               <div class="avail-future">All day May&nbsp;10+</div>
             </div>
-
-            <!-- Sat -->
             <div class="avail-col">
               <div class="avail-day">Sat</div>
               <div class="avail-slot">All&nbsp;Day</div>
             </div>
-
-            <!-- Sun -->
             <div class="avail-col">
               <div class="avail-day">Sun</div>
               <div class="avail-slot">All&nbsp;Day</div>
             </div>
-
           </div>
         </div>
       </div>
@@ -874,15 +718,12 @@
         </div>
       </div>
 
-    </div><!-- /main -->
-
-  </div><!-- /body -->
-
-  <!-- ══ FOOTER BAR ══════════════════════════════════════ -->
-  <div class="footer-bar">
-    <div class="footer-accent"></div>
+    </main>
   </div>
 
-</div><!-- /page -->
+  <!-- ══ FOOTER ══════════════════════════════════ -->
+  <div class="footer-bar"></div>
+
+</div><!-- /resume -->
 </body>
 </html>
