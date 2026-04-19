@@ -403,7 +403,7 @@
     /* ══════════════════════════════════════════════
        MOBILE  (≤ 640px)
     ══════════════════════════════════════════════ */
-    @media (max-width: 640px) {
+    @media screen and (max-width: 640px) {
       .resume { box-shadow: none; }
 
       .header {
@@ -484,7 +484,7 @@
       /* Scale the whole page proportionally so it looks exactly like
          the web view but fits on one letter sheet (10.4in printable height) */
       html {
-        zoom: 0.853;
+        zoom: 0.797;
         min-height: 0;
         -webkit-print-color-adjust: exact;
         print-color-adjust: exact;
@@ -519,7 +519,7 @@
     <div class="header-right">
       <img class="avatar" src="oscar-photo.png" alt="Oscar Rodriguez"/>
       <div class="cta-buttons">
-        <button class="cta-btn cta-btn-print" onclick="window.print()">🖨️ Print</button>
+        <a class="cta-btn cta-btn-print" href="oscar-resume-green.pdf" target="_blank">🖨️ Print</a>
         <a class="cta-btn cta-btn-download" href="oscar-resume-green.pdf" download="Oscar-Rodriguez-Resume.pdf">⬇️ PDF</a>
       </div>
       <div class="qr-box">
