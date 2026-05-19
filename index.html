@@ -331,7 +331,8 @@
     }
 
     /* ── AVAILABILITY ────────────────────────────── */
-    .avail-grid { display: grid; grid-template-columns: repeat(6, 1fr); gap: 6px; }
+    .avail-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 6px; }
+    .avail-maxhrs { font-size: 0.6rem; color: var(--text-gray); text-align: right; margin-top: 6px; font-style: italic; }
     .avail-col  { text-align: center; }
 
     .avail-day {
@@ -461,7 +462,7 @@
 
       .tag { font-size: 0.8rem; padding: 5px 12px; }
 
-      .avail-grid { grid-template-columns: repeat(3, 1fr); gap: 8px; }
+      .avail-grid { grid-template-columns: repeat(4, 1fr); gap: 6px; }
       .avail-day  { font-size: 0.72rem; }
       .avail-slot { font-size: 0.7rem; padding: 6px 2px; }
       .avail-note, .avail-future { font-size: 0.65rem; }
@@ -507,7 +508,7 @@
     <div class="header-main">
       <div class="badge">Available Now</div>
       <h1>Oscar Rodriguez</h1>
-      <div class="header-tagline">Hospitality &nbsp;·&nbsp; Retail &nbsp;·&nbsp; Back-of-House &nbsp;·&nbsp; Barista &nbsp;·&nbsp; Hands-On</div>
+      <div class="header-tagline">Grocery &nbsp;·&nbsp; Customer Service &nbsp;·&nbsp; Retail &nbsp;·&nbsp; Hospitality &nbsp;·&nbsp; Hands-On</div>
       <div class="header-quote">Hungry to learn. Ready to work. On time, every time.</div>
       <div class="contact-row">
         <span><span class="icon">📞</span>(224) 669-8336</span>
@@ -613,7 +614,7 @@
       <div>
         <div class="section-title">About Me</div>
         <div class="card">
-          <p class="about-text">I'm looking for my first job in a supporting, back-of-house, barista (with training), or product/prep role where I can work with my hands and learn the craft. I'm at the gym every morning by 6:30&nbsp;AM &mdash; that same discipline is what I'll bring to your team. I love carpentry and cooking, have a sharp palate, and I'm the teammate you can count on to show up on time and follow through.</p>
+          <p class="about-text">I'm eager to jump in wherever I'm needed &mdash; bagging groceries, helping customers find what they're looking for, keeping shelves stocked, or gathering carts. My 8 months of volunteer work taught me to show up reliably, work alongside a team, and treat every person &mdash; including Spanish speakers &mdash; with patience and care. I thrive in a fast-paced environment, follow instructions carefully, ask when I'm unsure, and take pride in keeping things clean and organized. I'm ready to start and ready to learn.</p>
           <p class="about-tagline">Hungry to learn. Ready to work. On time, every time.</p>
         </div>
       </div>
@@ -625,35 +626,37 @@
           <div class="avail-grid">
             <div class="avail-col">
               <div class="avail-day">Mon</div>
-              <div class="avail-slot">Morning</div>
-              <div class="avail-note">Until 11:30</div>
+              <div class="avail-slot off">Not Available</div>
             </div>
             <div class="avail-col">
               <div class="avail-day">Tue</div>
-              <div class="avail-slot soft">Evening</div>
-              <div class="avail-note">From 4:00 PM</div>
-              <div class="avail-future">All day May&nbsp;10+</div>
+              <div class="avail-slot">Any time</div>
+              <div class="avail-note">Until 7:00 PM</div>
             </div>
             <div class="avail-col">
               <div class="avail-day">Wed</div>
-              <div class="avail-slot">Morning</div>
-              <div class="avail-note">Until 11:30</div>
+              <div class="avail-slot off">Not Available</div>
             </div>
             <div class="avail-col">
               <div class="avail-day">Thu</div>
-              <div class="avail-slot soft">Evening</div>
-              <div class="avail-note">From 4:00 PM</div>
-              <div class="avail-future">All day May&nbsp;10+</div>
+              <div class="avail-slot">Any time</div>
+              <div class="avail-note">Until 7:00 PM</div>
+            </div>
+            <div class="avail-col">
+              <div class="avail-day">Fri</div>
+              <div class="avail-slot soft">Afternoon</div>
+              <div class="avail-note">After 3:00 PM</div>
             </div>
             <div class="avail-col">
               <div class="avail-day">Sat</div>
-              <div class="avail-slot">All&nbsp;Day</div>
+              <div class="avail-slot">Flexible</div>
             </div>
             <div class="avail-col">
               <div class="avail-day">Sun</div>
-              <div class="avail-slot">All&nbsp;Day</div>
+              <div class="avail-slot">Flexible</div>
             </div>
           </div>
+          <div class="avail-maxhrs">Max 20 hrs / week &nbsp;·&nbsp; ESL classes Mon &amp; Wed</div>
         </div>
       </div>
 
